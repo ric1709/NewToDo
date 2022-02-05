@@ -1,0 +1,43 @@
+
+.main1 {
+	width: 550px;
+	height: 50px;
+	background: #757f9a;
+	background: -webkit-linear-gradient(to right, #d7dde8, #757f9a);
+	background: linear-gradient(to right, #d7dde8, #757f9a);
+	margin: 10px;
+	border-radius: 15px;
+	object-fit: cover;
+
+	-webkit-box-reflect: below 2px
+		linear-gradient(transparent, transparent, #0004);
+
+	transform-origin: center;
+	transform: perspective(800px);
+	transition: 0.5s;
+
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-left: 440px;
+}
+.title {
+	font-size: 30px;
+}
+.date {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
+	margin-top: 15px;
+}
+.check {
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.done{
+    text-decoration: line-through;
+    font-size: 30px;
+}
