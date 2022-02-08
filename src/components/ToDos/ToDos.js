@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
+import todoContex from '../../store/todo-contex'
 import './ToDos.css'
 
-function ToDos(props) {
+function ToDos() {
+	const { data, setData } = useContext(todoContex)
 	const onChangeHandler = (e) => {
-		props.setData(
-			props.data.map((el) => {
+		setData(
+			data.map((el) => {
 				if (el.id === e.target.value) {
 					el.completed = !el.completed
 				}
@@ -13,8 +15,8 @@ function ToDos(props) {
 		)
 	}
 	let dataRender = <h1>No Todos</h1>
-	if (props.data.length > 0) {
-		dataRender = props.data.map((el) => (
+	if (data.length > 0) {
+		dataRender = data.map((el) => (
 			<div className='main1' key={el.id}>
 				<label className={el.completed ? 'done' : 'title'}>
 					{el.value}

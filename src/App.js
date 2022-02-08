@@ -3,13 +3,14 @@ import { useEffect } from 'react'
 import './App.css'
 import AddToDo from './components/AddToDo/AddToDo'
 import ToDos from './components/ToDos/ToDos'
+import todoContex from './store/todo-contex'
 
 function App() {
 	const [data, setData] = useState([])
 	const onAddDataHandler = (newData) => {
 		setData([...data, newData])
 	}
- 
+
 	useEffect(() => {
 		const todo = localStorage.getItem('data')
 		setData(JSON.parse(todo) || [])
@@ -18,10 +19,12 @@ function App() {
 		localStorage.setItem('data', JSON.stringify(data))
 	}, [data])
 	return (
-		<div className='App'>
-			<AddToDo onAdd={onAddDataHandler} />
-			<ToDos data={data} setData = {setData}/>
-		</div>
+		<todoContex.Provider value={{onAddDataHandler,data,setData}} >
+			<div className='App'>
+				<AddToDo />
+				<ToDos />
+			</div>
+		</todoContex.Provider>
 	)
 }
 

@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react'
+import React, { useContext, useReducer } from 'react'
+import todoContex from '../../store/todo-contex'
 import Button from '../UI/Button'
 import Card from '../UI/Card'
 import Modal from '../UI/Modal'
@@ -46,7 +47,8 @@ const inputReducer = (state, action) => {
 	}
 }
 
-function AddToDo(props) {
+function AddToDo() {
+	const {onAddDataHandler}=useContext(todoContex)
 	const [inputData, dispatchInput] = useReducer(inputReducer, {
 		value: '',
 		isValid: false,
@@ -78,7 +80,7 @@ function AddToDo(props) {
                 id: Math.random().toString(),
                 completed : false
             }
-			props.onAdd(data)
+			onAddDataHandler(data)
 		
 	}
 	const errorHandler = () => {
